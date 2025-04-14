@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -19,8 +19,10 @@ import androidx.compose.ui.unit.dp
 import cn.idesign.cui.bottomsheet.rememberBottomSheetState
 import cn.idesign.cui.cell.Cell
 import cn.idesign.cui.numberkeyboard.NumberKeyBoard
+import cn.idesign.cui.utils.ContentAlpha
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NumberKeyboardTest() {
     val commonState = rememberBottomSheetState()
@@ -36,8 +38,8 @@ fun NumberKeyboardTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Cell(text = "默认键盘", onClick = {
                 scope.launch {
@@ -51,8 +53,8 @@ fun NumberKeyboardTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Cell(text = "随机数键盘", onClick = {
                 scope.launch {
@@ -67,8 +69,8 @@ fun NumberKeyboardTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Cell(text = "自定义用法", onClick = {
                 scope.launch {
@@ -82,8 +84,8 @@ fun NumberKeyboardTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Cell(text = "禁用确认按钮", onClick = {
                 scope.launch {

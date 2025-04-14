@@ -7,7 +7,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,6 +23,7 @@ import cn.idesign.cui.timeselect.TimeSelect
 import kotlinx.coroutines.launch
 import java.util.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("MutableCollectionMutableState")
 @Composable
 fun TimeSelectTest() {
@@ -116,14 +118,14 @@ fun TimeSelectTest() {
             selectTime = Collections.EMPTY_LIST
         },
         onTimeChange = { selectTime = it },
-        timeActiveStyle = MaterialTheme.typography.body2.copy(MaterialTheme.colors.error),
+        timeActiveStyle = MaterialTheme.typography.bodyMedium.copy(MaterialTheme.colorScheme.error),
         timeActiveModifier = Modifier
             .background(
-                MaterialTheme.colors.error.copy(0.12f),
+                MaterialTheme.colorScheme.error.copy(0.12f),
             )
             .border(
                 1.dp,
-                MaterialTheme.colors.error,
+                MaterialTheme.colorScheme.error,
                 RoundedCornerShape(4.dp)
             )
     ) {

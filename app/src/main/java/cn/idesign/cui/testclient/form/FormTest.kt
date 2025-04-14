@@ -4,26 +4,20 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Button
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import cn.idesign.cui.form.Form
-import cn.idesign.cui.form.FormField
 import cn.idesign.cui.form.FormInput
 import cn.idesign.cui.form.FormItemType
 import cn.idesign.cui.form.composable
 import cn.idesign.cui.form.rememberFormState
+import cn.idesign.cui.utils.ContentAlpha
 
 @Composable
 fun FormTest() {
@@ -35,8 +29,8 @@ fun FormTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             val state = rememberFormState()
             Form(

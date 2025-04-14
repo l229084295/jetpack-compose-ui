@@ -12,9 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -25,14 +24,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import cn.idesign.cui.image.NetworkImage
+import cn.idesign.cui.utils.ContentAlpha
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
 fun GridCard(
     modifier: Modifier = Modifier,
     title: String? = null,
-    titleStyle: TextStyle = MaterialTheme.typography.body1.copy(fontWeight = FontWeight.Medium),
-    textStyle: TextStyle = MaterialTheme.typography.body2,
+    titleStyle: TextStyle = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium),
+    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
     count: Int = 4,
     data: List<GridCardModel> = listOf(),
     horizontalSpacing: Dp = 0.dp,
@@ -43,7 +43,7 @@ fun GridCard(
         val itemWidthDp = (maxWidth - horizontalSpacing * count) / count
         Column(
             modifier = Modifier
-                .background(MaterialTheme.colors.surface)
+                .background(MaterialTheme.colorScheme.surface)
                 .then(modifier)
         ) {
             title?.let {
@@ -101,7 +101,7 @@ fun GridCard(
                                 text = it,
                                 modifier = Modifier.padding(top = 6.dp),
                                 color = model.textColor.takeOrElse {
-                                    MaterialTheme.colors.onSurface.copy(
+                                    MaterialTheme.colorScheme.onSurface.copy(
                                         ContentAlpha.medium
                                     )
                                 },

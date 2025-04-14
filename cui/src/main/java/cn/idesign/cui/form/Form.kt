@@ -11,10 +11,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -24,6 +23,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import cn.idesign.cui.utils.ContentAlpha
 
 @SuppressLint("RememberReturnType")
 @Composable
@@ -70,7 +70,7 @@ fun FormField(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colors.background)
+                .background(MaterialTheme.colorScheme.background)
                 .then(modifier),
             verticalAlignment = verticalAlignment,
         ) {
@@ -86,7 +86,7 @@ fun FormField(
             }
         }
         if (showDivider) {
-            Divider()
+            HorizontalDivider()
         }
     }
 }
@@ -95,7 +95,7 @@ fun FormField(
 fun FormInput(
     state: FormItemState,
     placeholder: String = "请输入搜索信息",
-    color: Color = MaterialTheme.colors.onSurface.copy(ContentAlpha.disabled),
+    color: Color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.disabled),
 ) {
     BasicTextField(
         value = state.value,
@@ -106,7 +106,7 @@ fun FormInput(
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        textStyle = MaterialTheme.typography.body2,
+        textStyle = MaterialTheme.typography.bodyMedium,
         visualTransformation = VisualTransformation.None,
         keyboardOptions = KeyboardOptions.Default,
         keyboardActions = KeyboardActions.Default,

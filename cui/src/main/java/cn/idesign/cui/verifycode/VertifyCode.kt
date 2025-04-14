@@ -15,8 +15,7 @@ import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -50,6 +49,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.text.isDigitsOnly
+import cn.idesign.cui.utils.ContentAlpha
 
 /**
  * 验证码输入组件，支持下划线、正方形
@@ -63,7 +63,7 @@ fun VerifyCode(
     size: DpSize = DpSize(40.dp, 40.dp),
     lineHeight: Dp = 2.dp,
     textFontSize: TextUnit = 32.sp,
-    activeLineColor: Color = MaterialTheme.colors.onSurface,
+    activeLineColor: Color = MaterialTheme.colorScheme.onSurface,
     textColor: Color = activeLineColor,
     normalLineColor: Color = activeLineColor.copy(alpha = ContentAlpha.disabled),
     cursorLineWidth: Dp = 2.dp,

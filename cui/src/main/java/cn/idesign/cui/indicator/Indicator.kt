@@ -3,10 +3,7 @@ package cn.idesign.cui.indicator
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,6 +12,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import cn.idesign.cui.utils.ContentAlpha
 
 @Composable
 fun Indicator(
@@ -22,7 +20,7 @@ fun Indicator(
     currentPage: Int,
     indicatorProgress: Float,
     modifier: Modifier = Modifier,
-    activeColor: Color = MaterialTheme.colors.primary.copy(ContentAlpha.high),
+    activeColor: Color = MaterialTheme.colorScheme.primary.copy(ContentAlpha.high),
     inactiveColor: Color = activeColor.copy(ContentAlpha.disabled),
     indicatorShape: Shape = CircleShape,
     inactiveIndicatorWidth: Dp = 8.dp,

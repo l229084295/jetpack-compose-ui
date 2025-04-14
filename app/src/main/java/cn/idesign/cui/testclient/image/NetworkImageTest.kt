@@ -8,9 +8,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -20,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import cn.idesign.cui.image.NetworkImage
 import cn.idesign.cui.testclient.R
+import cn.idesign.cui.utils.ContentAlpha
 
 @Composable
 fun NetworkImageTest() {
@@ -31,8 +31,8 @@ fun NetworkImageTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             NetworkImage(
                 data = "https://img01.yzcdn.cn/vant/cat.jpeg", modifier = Modifier
@@ -47,8 +47,8 @@ fun NetworkImageTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceAround,
@@ -65,7 +65,7 @@ fun NetworkImageTest() {
                     )
                     Text(
                         text = "Crop",
-                        color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high)
+                        color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high)
                     )
                 }
                 Column() {
@@ -77,7 +77,7 @@ fun NetworkImageTest() {
                     )
                     Text(
                         text = "Fit",
-                        color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high)
+                        color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high)
                     )
                 }
                 Column() {
@@ -89,7 +89,7 @@ fun NetworkImageTest() {
                     )
                     Text(
                         text = "FillBounds",
-                        color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high)
+                        color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high)
                     )
                 }
             }
@@ -108,7 +108,7 @@ fun NetworkImageTest() {
                     )
                     Text(
                         text = "FillHeight",
-                        color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high)
+                        color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high)
                     )
                 }
                 Column() {
@@ -120,7 +120,7 @@ fun NetworkImageTest() {
                     )
                     Text(
                         text = "FillWidth",
-                        color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high)
+                        color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high)
                     )
                 }
                 Column() {
@@ -132,7 +132,7 @@ fun NetworkImageTest() {
                     )
                     Text(
                         text = "Inside",
-                        color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high)
+                        color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high)
                     )
                 }
             }
@@ -144,8 +144,8 @@ fun NetworkImageTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             NetworkImage(
                 data = "https://img01.yzcdn.cn/vant/cat1.jpeg", modifier = Modifier

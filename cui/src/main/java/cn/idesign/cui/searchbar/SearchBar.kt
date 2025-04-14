@@ -20,14 +20,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,6 +44,7 @@ import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import androidx.constraintlayout.compose.MotionLayout
+import cn.idesign.cui.utils.ContentAlpha
 
 @SuppressLint("Range")
 @OptIn(
@@ -61,7 +61,7 @@ fun SearchBar(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
-    color: Color = MaterialTheme.colors.onSurface.copy(ContentAlpha.disabled),
+    color: Color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.disabled),
     onActionClick: ((value: String) -> Unit)? = null,
     onChange: ((value: String) -> Unit)? = null,
 ) {
@@ -157,7 +157,7 @@ fun SearchBar(
         Box(
             modifier = Modifier
                 .layoutId("background")
-                .background(MaterialTheme.colors.onSurface.copy(0.05f), MaterialTheme.shapes.small)
+                .background(MaterialTheme.colorScheme.onSurface.copy(0.05f), MaterialTheme.shapes.small)
         )
         Icon(
             Icons.Default.Search,
@@ -176,7 +176,7 @@ fun SearchBar(
             modifier = Modifier
                 .layoutId("input")
                 .onFocusChanged { focus = it.isFocused },
-            textStyle = MaterialTheme.typography.body2,
+            textStyle = MaterialTheme.typography.bodyMedium,
             visualTransformation = visualTransformation,
             keyboardOptions = keyboardOptions,
             keyboardActions = keyboardActions,
@@ -204,7 +204,7 @@ fun SearchBar(
             Icon(
                 Icons.Default.Close,
                 null,
-                tint = MaterialTheme.colors.onSurface.copy(ContentAlpha.disabled),
+                tint = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.disabled),
                 modifier = Modifier
                     .size(20.dp)
                     .padding(2.dp)
@@ -217,7 +217,7 @@ fun SearchBar(
                     )
                     .border(
                         width = 1.dp,
-                        color = MaterialTheme.colors.onSurface.copy(ContentAlpha.disabled),
+                        color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.disabled),
                         shape = CircleShape
                     )
             )

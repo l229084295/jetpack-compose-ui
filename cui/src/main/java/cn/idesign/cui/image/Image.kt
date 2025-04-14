@@ -8,7 +8,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.mutableStateOf
@@ -137,7 +137,7 @@ fun NetworkImage(
 
 @Composable
 fun getDrawableShape(): Drawable {
-    val color = MaterialTheme.colors.onSurface
+    val color = MaterialTheme.colorScheme.onSurface
     return remember {
         val roundedCorners = floatArrayOf(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f)
         ShapeDrawable(RoundRectShape(roundedCorners, null, null)).apply {

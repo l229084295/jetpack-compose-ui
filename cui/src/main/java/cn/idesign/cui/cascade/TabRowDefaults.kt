@@ -10,11 +10,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.Divider
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ScrollableTabRow
-import androidx.compose.material.TabRow
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -40,7 +38,7 @@ object TabRowDefaults {
         thickness: Dp = DividerThickness,
         color: Color = LocalContentColor.current.copy(alpha = DividerOpacity)
     ) {
-        androidx.compose.material.Divider(modifier = modifier, thickness = thickness, color = color)
+        HorizontalDivider(modifier = modifier, thickness = thickness, color = color)
     }
 
     /**
@@ -55,7 +53,7 @@ object TabRowDefaults {
     fun Indicator(
         modifier: Modifier = Modifier,
         height: Dp = IndicatorHeight,
-        color: Color = MaterialTheme.colors.primary
+        color: Color = MaterialTheme.colorScheme.primary
     ) {
         Box(
             modifier

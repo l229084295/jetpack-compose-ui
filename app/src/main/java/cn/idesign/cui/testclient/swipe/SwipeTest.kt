@@ -9,10 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Switch
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,6 +27,7 @@ import cn.idesign.cui.cell.Cell
 import cn.idesign.cui.swipe.Swipe
 import cn.idesign.cui.swipe.SwipeDirection
 import cn.idesign.cui.swipe.rememberSwipeState
+import cn.idesign.cui.utils.ContentAlpha
 import kotlinx.coroutines.launch
 
 @Composable
@@ -46,8 +46,8 @@ fun SwipeTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Swipe(background = {
                 Box(
@@ -73,8 +73,8 @@ fun SwipeTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Swipe(
                 direction = SwipeDirection.LeftToRight,
@@ -83,7 +83,7 @@ fun SwipeTest() {
                         modifier = Modifier
                             .width(66.dp)
                             .fillMaxHeight()
-                            .background(MaterialTheme.colors.primary),
+                            .background(MaterialTheme.colorScheme.primary),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
@@ -102,8 +102,8 @@ fun SwipeTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Swipe(background = {
                 Row {
@@ -124,7 +124,7 @@ fun SwipeTest() {
                         modifier = Modifier
                             .width(66.dp)
                             .fillMaxHeight()
-                            .background(MaterialTheme.colors.primary),
+                            .background(MaterialTheme.colorScheme.primary),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
@@ -145,8 +145,8 @@ fun SwipeTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Swipe(
                 state = state,

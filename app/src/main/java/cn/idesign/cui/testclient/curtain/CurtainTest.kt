@@ -8,10 +8,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Button
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,6 +26,7 @@ import cn.idesign.cui.curtain.Curtain
 import cn.idesign.cui.curtain.CurtainAlignment
 import cn.idesign.cui.curtain.CurtainModel
 import cn.idesign.cui.modal.rememberModalState
+import cn.idesign.cui.utils.ContentAlpha
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.flowlayout.MainAxisAlignment
 import com.google.accompanist.flowlayout.SizeMode
@@ -74,8 +74,8 @@ fun CurtainTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             FlowRow(
                 mainAxisAlignment = MainAxisAlignment.Center,

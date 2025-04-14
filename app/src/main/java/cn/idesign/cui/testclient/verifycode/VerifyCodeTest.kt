@@ -8,15 +8,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import cn.idesign.cui.utils.ContentAlpha
 import cn.idesign.cui.verifycode.VerifyCode
 import cn.idesign.cui.verifycode.VerifyType
 
@@ -30,8 +30,8 @@ fun VerifyCodeTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             VerifyCode(
             ) {
@@ -45,8 +45,8 @@ fun VerifyCodeTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             VerifyCode(
                 type = VerifyType.Square
@@ -60,8 +60,8 @@ fun VerifyCodeTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             VerifyCode(
                 size = DpSize(45.dp, 45.dp)
@@ -82,8 +82,8 @@ fun VerifyCodeTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             VerifyCode(
                 count = 4,
@@ -104,8 +104,8 @@ fun VerifyCodeTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             VerifyCode(
                 lineHeight = 3.dp,
@@ -128,22 +128,22 @@ fun VerifyCodeTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             VerifyCode(
-                activeLineColor = MaterialTheme.colors.primary,
-                cursorLineColor = MaterialTheme.colors.secondary,
-                textColor = MaterialTheme.colors.onSurface
+                activeLineColor = MaterialTheme.colorScheme.primary,
+                cursorLineColor = MaterialTheme.colorScheme.secondary,
+                textColor = MaterialTheme.colorScheme.onSurface
             ) {
                 Toast.makeText(context, "输入完成", Toast.LENGTH_SHORT).show()
             }
             Spacer(modifier = Modifier.height(10.dp))
             VerifyCode(
                 type = VerifyType.Square,
-                activeLineColor = MaterialTheme.colors.primary,
-                cursorLineColor = MaterialTheme.colors.secondary,
-                textColor = MaterialTheme.colors.error
+                activeLineColor = MaterialTheme.colorScheme.primary,
+                cursorLineColor = MaterialTheme.colorScheme.secondary,
+                textColor = MaterialTheme.colorScheme.error
             ) {
                 Toast.makeText(context, "输入完成", Toast.LENGTH_SHORT).show()
             }

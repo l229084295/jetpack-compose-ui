@@ -1,7 +1,6 @@
 package cn.idesign.cui.testclient.selectcity
 
 import android.widget.Toast
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -18,7 +17,6 @@ import com.squareup.moshi.Types
 import kotlinx.coroutines.launch
 import java.util.*
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun SelectCityTest() {
     var cityList by remember {

@@ -8,10 +8,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,10 +23,11 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cn.idesign.cui.utils.ContentAlpha
 import java.util.*
 import kotlin.math.floor
 
-@OptIn(ExperimentalMaterialApi::class, androidx.compose.ui.ExperimentalComposeUiApi::class)
+@OptIn(androidx.compose.ui.ExperimentalComposeUiApi::class)
 @Composable
 fun IndexBar(
     modifier: Modifier = Modifier,
@@ -87,8 +86,8 @@ fun IndexBar(
                 ) {
                     Text(
                         text = item,
-                        style = MaterialTheme.typography.body1.copy(fontSize = 10.sp),
-                        color = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.high),
+                        style = MaterialTheme.typography.bodyLarge.copy(fontSize = 10.sp),
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = ContentAlpha.high),
                     )
                 }
             }
@@ -104,7 +103,7 @@ fun IndexBar(
                     }
                     .size(width = boxWidthSize, height = boxHeightSize)
                     .background(
-                        color = MaterialTheme.colors.primary.copy(alpha = ContentAlpha.medium),
+                        color = MaterialTheme.colorScheme.primary.copy(alpha = ContentAlpha.medium),
                         shape = CircleShape
                     ),
                 contentAlignment = Alignment.Center
@@ -112,8 +111,8 @@ fun IndexBar(
             ) {
                 Text(
                     text = state.selectIndex,
-                    style = MaterialTheme.typography.body1.copy(fontSize = 10.sp),
-                    color = MaterialTheme.colors.onPrimary.copy(alpha = ContentAlpha.high),
+                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 10.sp),
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = ContentAlpha.high),
                 )
             }
         }

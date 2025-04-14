@@ -4,8 +4,8 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -93,8 +93,8 @@ fun PrivacyPolicyTest() {
                     Toast.makeText(context, "点击了同意", Toast.LENGTH_SHORT).show()
                     customColorState.hide()
                 },
-                annotatedStyle = SpanStyle(color = MaterialTheme.colors.secondary),
-                okButtonColors = ButtonDefaults.buttonColors(backgroundColor = Color(0xfff1ad3b))
+                annotatedStyle = SpanStyle(color = MaterialTheme.colorScheme.secondary),
+                okButtonColors = ButtonDefaults.buttonColors(containerColor = Color(0xfff1ad3b))
 
             )
         }

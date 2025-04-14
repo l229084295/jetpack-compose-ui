@@ -18,10 +18,10 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cn.idesign.cui.testclient.searchbar.SearchBar
+import cn.idesign.cui.utils.ContentAlpha
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.flowlayout.SizeMode
 import kotlinx.coroutines.CoroutineScope
@@ -60,9 +61,9 @@ fun SelectCity(
     val searchList by remember(searchValue) {
         derivedStateOf { cityList.filter { it.city.contains(searchValue) } }
     }
-    Column(modifier=Modifier.background(MaterialTheme.colors.surface)) {
-        Box( modifier = Modifier.padding(10.dp)) {
-            SearchBar(value = searchValue,onActionClick = {
+    Column(modifier = Modifier.background(MaterialTheme.colorScheme.surface)) {
+        Box(modifier = Modifier.padding(10.dp)) {
+            SearchBar(value = searchValue, onActionClick = {
                 searchValue = it
             }) { searchValue = it }
         }
@@ -89,7 +90,7 @@ fun SearchList(
                         .height(itemHeight)
                         .padding(start = 15.dp)
                 ) {
-                    Divider()
+                    HorizontalDivider()
                     Text(
                         text = "未找到相关信息，请修改后重试",
                         modifier = Modifier
@@ -182,13 +183,13 @@ fun CityList(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(tagHeight)
-                            .background(MaterialTheme.colors.onSurface.copy(alpha = 0.1f))
+                            .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f))
                             .padding(start = 15.dp),
                     ) {
 
                         Text(
                             text = item.tagIndex,
-                            color = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium),
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = ContentAlpha.medium),
                             modifier = Modifier
                                 .wrapContentHeight(Alignment.CenterVertically)
                                 .weight(1f)
@@ -212,7 +213,7 @@ fun CityList(
                             .weight(1f),
 
                         )
-                    Divider()
+                    HorizontalDivider()
                 }
             }
         }
@@ -235,13 +236,13 @@ fun CityList(
             Box(
                 modifier = Modifier
                     .size(80.dp)
-                    .background(MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)),
+                    .background(MaterialTheme.colorScheme.onSurface.copy(alpha = ContentAlpha.medium)),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = selectTag,
-                    color = MaterialTheme.colors.surface.copy(ContentAlpha.high),
-                    style = MaterialTheme.typography.h4
+                    color = MaterialTheme.colorScheme.surface.copy(ContentAlpha.high),
+                    style = MaterialTheme.typography.displayMedium
                 )
             }
         }
@@ -272,15 +273,15 @@ fun HotCity(hotCityList: List<CityModel>, onSelect: ((city: CityModel) -> Unit)?
                             onSelect?.let { it(model) }
                         }
                         .background(
-                            color = MaterialTheme.colors.onSurface.copy(0.05f),
+                            color = MaterialTheme.colorScheme.onSurface.copy(0.05f),
                             shape = MaterialTheme.shapes.small
                         ),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         text = model.city,
-                        color = MaterialTheme.colors.onSurface.copy(ContentAlpha.medium),
-                        style = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
+                        color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.medium),
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 12.sp),
                         modifier = Modifier.padding(horizontal = 4.dp, vertical = 8.dp)
                     )
                 }
@@ -297,7 +298,7 @@ fun HotCity(hotCityList: List<CityModel>, onSelect: ((city: CityModel) -> Unit)?
 //        Modifier
 //            .fillMaxWidth()
 //            .padding(15.dp)
-//            .background(MaterialTheme.colors.onSurface.copy(0.05f), RoundedCornerShape(5.dp))
+//            .background(MaterialTheme.colorScheme.onSurface.copy(0.05f), RoundedCornerShape(5.dp))
 //    ) {
 //        Row(
 //            modifier = Modifier
@@ -309,7 +310,7 @@ fun HotCity(hotCityList: List<CityModel>, onSelect: ((city: CityModel) -> Unit)?
 //                null,
 //                modifier = Modifier
 //                    .size(20.dp),
-//                tint = MaterialTheme.colors.onSurface.copy(ContentAlpha.disabled)
+//                tint = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.disabled)
 //            )
 //            Spacer(modifier = Modifier.width(10.dp))
 //            BasicTextField(
@@ -317,13 +318,13 @@ fun HotCity(hotCityList: List<CityModel>, onSelect: ((city: CityModel) -> Unit)?
 //                onValueChange = onValueChange,
 //                singleLine = true,
 //                modifier = Modifier.weight(1f),
-//                textStyle = MaterialTheme.typography.body2,
+//                textStyle = MaterialTheme.typography.bodyMedium,
 //                decorationBox = { innerTextField ->
 //                    Row(modifier = Modifier.fillMaxWidth()) {
 //                        if (searchValue.isEmpty()) {
 //                            Text(
 //                                text = "请输入搜索信息",
-//                                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.disabled),
+//                                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.disabled),
 //                            )
 //                        }
 //                    }
@@ -339,7 +340,7 @@ fun HotCity(hotCityList: List<CityModel>, onSelect: ((city: CityModel) -> Unit)?
 //                Icon(
 //                    Icons.Default.Close,
 //                    null,
-//                    tint = MaterialTheme.colors.surface.copy(ContentAlpha.high),
+//                    tint = MaterialTheme.colorScheme.surface.copy(ContentAlpha.high),
 //                    modifier = Modifier
 //                        .size(20.dp)
 //                        .padding(2.dp)
@@ -351,7 +352,7 @@ fun HotCity(hotCityList: List<CityModel>, onSelect: ((city: CityModel) -> Unit)?
 //                            }
 //                        )
 //                        .background(
-//                            MaterialTheme.colors.onSurface.copy(0.12f),
+//                            MaterialTheme.colorScheme.onSurface.copy(0.12f),
 //                            CircleShape
 //                        )
 //                )

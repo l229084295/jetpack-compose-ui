@@ -13,11 +13,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Divider
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.derivedStateOf
@@ -41,21 +41,20 @@ import cn.idesign.cui.bottomsheet.BottomSheetState
 import cn.idesign.cui.bottomsheet.BottomSheetValue
 import cn.idesign.cui.bottomsheet.rememberBottomSheetState
 import cn.idesign.cui.cascade.TabRowDefaults.tabIndicatorOffset
-import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("MutableCollectionMutableState", "RememberReturnType")
-@OptIn(ExperimentalPagerApi::class, ExperimentalMaterialApi::class)
 @Composable
 fun Cascade(
     state: BottomSheetState = rememberBottomSheetState(),
     options: List<CascadeModel>,
     cancelText: String = "取消",
     confirmText: String = "确定",
-    selectColor: Color = MaterialTheme.colors.primary,
-    normalColor: Color = MaterialTheme.colors.onSurface,
-    cancelColor: Color = MaterialTheme.colors.primary,
-    confirmColor: Color = MaterialTheme.colors.primary,
+    selectColor: Color = MaterialTheme.colorScheme.primary,
+    normalColor: Color = MaterialTheme.colorScheme.onSurface,
+    cancelColor: Color = MaterialTheme.colorScheme.primary,
+    confirmColor: Color = MaterialTheme.colorScheme.primary,
     onCancel: (() -> Unit)? = null,
     onConfirm: ((List<CascadeModel>) -> Unit)? = null,
 ) {
@@ -96,7 +95,7 @@ fun Cascade(
                 modifier = Modifier
                     .fillMaxWidth()
                     .fillMaxHeight(0.7f)
-                    .background(MaterialTheme.colors.surface)
+                    .background(MaterialTheme.colorScheme.surface)
             ) {
                 Header(
                     cancelText,
@@ -158,13 +157,13 @@ fun Cascade(
                                 Text(
                                     text = tabList[index].label,
                                     color = color,
-                                    style = MaterialTheme.typography.body2
+                                    style = MaterialTheme.typography.bodyMedium
                                 )
                             }
                         }
                     }
                 }
-                Divider()
+                HorizontalDivider()
 
                 LazyColumn {
                     selectModel?.children?.let {
@@ -217,7 +216,7 @@ fun Cascade(
                                 Text(
                                     text = option.label,
                                     color = color,
-                                    style = MaterialTheme.typography.body2
+                                    style = MaterialTheme.typography.bodyMedium
                                 )
                             }
                         }
@@ -316,7 +315,7 @@ private fun Header(
             Text(
                 text = cancelText,
                 color = cancelColor,
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyLarge,
             )
         }
         Box(
@@ -330,12 +329,13 @@ private fun Header(
             Text(
                 text = confirmText,
                 color = confirmColor,
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyLarge,
             )
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview("Cascade")
 @Composable
 fun CascadePreview() {

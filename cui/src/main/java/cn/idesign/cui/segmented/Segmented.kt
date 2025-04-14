@@ -19,11 +19,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalAbsoluteElevation
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.contentColorFor
+import androidx.compose.material3.LocalAbsoluteTonalElevation
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -41,14 +39,13 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import cn.idesign.cui.utils.ContentAlpha
 import cn.idesign.cui.utils.calculateForegroundColor
 import java.util.*
-import kotlin.math.ln
 
 
 @JvmName("SegmentedSimple")
@@ -58,7 +55,7 @@ fun Segmented(
     options: List<String> = Collections.emptyList(),
     value: String,
     block: Boolean = false,
-    activeTextStyle: TextStyle = MaterialTheme.typography.body2,
+    activeTextStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     normalTextStyle: TextStyle = activeTextStyle.copy(
         color = activeTextStyle.color.copy(
             ContentAlpha.medium
@@ -86,13 +83,13 @@ fun Segmented(
     options: List<SegmentedModel> = Collections.emptyList(),
     value: String,
     block: Boolean = false,
-    activeTextStyle: TextStyle = MaterialTheme.typography.body2,
+    activeTextStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     normalTextStyle: TextStyle = activeTextStyle.copy(
         color = activeTextStyle.color.copy(
             ContentAlpha.medium
         )
     ),
-    backgroundColor: Color = MaterialTheme.colors.surface,
+    backgroundColor: Color = MaterialTheme.colorScheme.surface,
     onChange: (value: SegmentedModel) -> Unit,
 ) {
     val selectIndex by remember(options, value) {
@@ -131,8 +128,7 @@ fun Segmented(
         selectSize = itemRectList[selectIndex]
 
     }
-
-    val absoluteElevation = LocalAbsoluteElevation.current + 1.dp
+    val absoluteElevation = LocalAbsoluteTonalElevation.current + 1.dp
     val foregroundColor = calculateForegroundColor(backgroundColor, absoluteElevation)
     val _backgroundColor = foregroundColor.compositeOver(backgroundColor)
     Box(
@@ -154,7 +150,7 @@ fun Segmented(
                 )
             }
             .shadow(2.dp)
-            .background(MaterialTheme.colors.surface, RoundedCornerShape(2.dp))
+            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(2.dp))
             .animateContentSize()
         ) {}
         Row(modifier = Modifier.zIndex(1f)) {

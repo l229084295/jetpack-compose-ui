@@ -12,6 +12,11 @@ import androidx.compose.material.icons.filled.FirstPage
 import androidx.compose.material.icons.filled.LastPage
 import androidx.compose.material.icons.filled.NavigateBefore
 import androidx.compose.material.icons.filled.NavigateNext
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -125,7 +130,7 @@ fun IndicatorTest() {
                         )
                         Text(
                             text = text,
-                            style = MaterialTheme.typography.body1.merge(),
+                            style = MaterialTheme.typography.bodyLarge.merge(),
                         )
                     }
                 }
@@ -152,7 +157,7 @@ fun IndicatorTest() {
                         )
                         Text(
                             text = text,
-                            style = MaterialTheme.typography.body1.merge(),
+                            style = MaterialTheme.typography.bodyLarge.merge(),
                         )
                     }
                 }

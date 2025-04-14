@@ -9,8 +9,7 @@ import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -75,7 +74,7 @@ fun SignaturePad(
             .clipToBounds()
             .border(
                 1.dp,
-                MaterialTheme.colors.onSurface.copy(0.12f),
+                MaterialTheme.colorScheme.onSurface.copy(0.12f),
                 RoundedCornerShape(4.dp)
             )
             .pointerInput(Unit) {
@@ -118,7 +117,6 @@ fun rememberSignaturePadState(
     path: Path = Path()
 ): SignaturePadState = SignaturePadState(path)
 
-@OptIn(ExperimentalMaterialApi::class)
 class SignaturePadState(val path: Path) {
     private var _currentValue: Path by mutableStateOf(path)
     internal var size: Size by mutableStateOf(Size.Zero)

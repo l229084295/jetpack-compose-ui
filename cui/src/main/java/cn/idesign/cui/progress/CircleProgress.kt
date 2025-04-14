@@ -5,9 +5,8 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
-import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ProgressIndicatorDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -23,9 +22,9 @@ import androidx.compose.ui.unit.Dp
 fun CircleProgress(
     modifier: Modifier = Modifier,
     progress: Float = 0f,
-    color: Color = MaterialTheme.colors.primary,
-    backgroundColor: Color = color.copy(alpha = ProgressIndicatorDefaults.IndicatorBackgroundOpacity),
-    strokeWidth: Dp = ProgressIndicatorDefaults.StrokeWidth,
+    color: Color = MaterialTheme.colorScheme.primary,
+    backgroundColor: Color = color.copy(alpha = 0.5f),
+    strokeWidth: Dp = ProgressIndicatorDefaults.CircularStrokeWidth,
     strokeCap: StrokeCap = StrokeCap.Round,
     animationSpec: AnimationSpec<Float> = tween(durationMillis = 1000, easing = FastOutSlowInEasing)
 ) {

@@ -12,19 +12,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForwardIos
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import cn.idesign.cui.utils.ContentAlpha
 
 @Composable
 fun Cell(
@@ -33,17 +33,17 @@ fun Cell(
     iconModifier: Modifier = Modifier,
     text: String,
     secondaryText: String? = null,
-    textStyle: TextStyle = MaterialTheme.typography.body1.copy(
-        color = MaterialTheme.colors.onSurface
+    textStyle: TextStyle = MaterialTheme.typography.bodyLarge.copy(
+        color = MaterialTheme.colorScheme.onSurface
     ),
-    secondaryTextStyle: TextStyle = MaterialTheme.typography.body2.copy(
-        color = MaterialTheme.colors.onSurface.copy(
+    secondaryTextStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(
+        color = MaterialTheme.colorScheme.onSurface.copy(
             ContentAlpha.disabled
         )
     ),
     rightText: String? = null,
-    rightTextStyle: TextStyle = MaterialTheme.typography.body2.copy(
-        color = MaterialTheme.colors.onSurface.copy(
+    rightTextStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(
+        color = MaterialTheme.colorScheme.onSurface.copy(
             ContentAlpha.disabled
         )
     ),
@@ -56,7 +56,7 @@ fun Cell(
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-            .background(MaterialTheme.colors.surface)
+            .background(MaterialTheme.colorScheme.surface)
             .clickable(
                 enabled = onClick != null,
                 onClick = {
@@ -95,7 +95,7 @@ fun Cell(
                         modifier = Modifier
                             .size(24.dp)
                             .padding(4.dp),
-                        tint = MaterialTheme.colors.onSurface.copy(ContentAlpha.high)
+                        tint = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high)
                     )
                 } else {
                     rightComponent()
@@ -147,7 +147,7 @@ fun Cell(
                 rightComponent?.invoke()
             }
             if (showDivider) {
-                Divider(modifier = Modifier.align(Alignment.BottomStart))
+                HorizontalDivider(modifier = Modifier.align(Alignment.BottomStart))
             }
         }
 

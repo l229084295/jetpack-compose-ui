@@ -1,6 +1,6 @@
 package cn.idesign.cui.utils
 
-import androidx.compose.material.contentColorFor
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp

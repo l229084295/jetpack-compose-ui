@@ -5,9 +5,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import cn.idesign.cui.utils.ContentAlpha
 
 @Composable
 fun ActionSheetItem(
@@ -22,11 +22,11 @@ fun ActionSheetItem(
     text: String? = null,
     textModifier: Modifier,
     textColor: Color,
-    textTextStyle: TextStyle = MaterialTheme.typography.subtitle1,
+    textTextStyle: TextStyle = MaterialTheme.typography.titleLarge,
     secondaryText: String? = null,
     secondaryTextColor: Color,
     secondaryTextModifier: Modifier,
-    secondaryTextTextStyle: TextStyle = MaterialTheme.typography.body2,
+    secondaryTextTextStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     horizontalAlignment: Alignment.Horizontal,
     verticalArrangement: Arrangement.HorizontalOrVertical,
     onClick: (() -> Unit)? = null,
@@ -50,7 +50,7 @@ fun ActionSheetItem(
         text?.let {
             Text(
                 text = it,
-                color = textColor.takeOrElse { MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.high) },
+                color = textColor.takeOrElse { MaterialTheme.colorScheme.onSurface.copy(alpha = ContentAlpha.high) },
                 modifier = textModifier,
                 style = textTextStyle
             )
@@ -58,7 +58,7 @@ fun ActionSheetItem(
         secondaryText?.let {
             Text(
                 text = it,
-                color = secondaryTextColor.takeOrElse { MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled) },
+                color = secondaryTextColor.takeOrElse { MaterialTheme.colorScheme.onSurface.copy(alpha = ContentAlpha.disabled) },
                 modifier = secondaryTextModifier,
                 style = secondaryTextTextStyle
             )

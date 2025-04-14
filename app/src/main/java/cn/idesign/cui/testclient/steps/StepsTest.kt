@@ -8,10 +8,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Button
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,6 +23,7 @@ import cn.idesign.cui.steps.StepModel
 import cn.idesign.cui.steps.StepStatus
 import cn.idesign.cui.steps.Steps
 import cn.idesign.cui.steps.rememberStepState
+import cn.idesign.cui.utils.ContentAlpha
 
 @Composable
 fun StepsTest() {
@@ -101,14 +101,14 @@ fun StepsTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Steps(
                 state = stepState,
                 data = horizontalData,
                 direction = Direction.Horizontal,
-                modifier = Modifier.fillMaxWidth().background(MaterialTheme.colors.surface)
+                modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surface)
             )
 
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
@@ -129,11 +129,11 @@ fun StepsTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Steps(
-                modifier = Modifier.background(MaterialTheme.colors.surface),
+                modifier = Modifier.background(MaterialTheme.colorScheme.surface),
                 state = verticaStepState,
                 data = verticalData
             )
@@ -164,11 +164,11 @@ fun StepsTest() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 5.dp),
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high),
-                style = MaterialTheme.typography.subtitle1.copy(fontWeight = FontWeight.Medium)
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
             Steps(
-                modifier = Modifier.background(MaterialTheme.colors.surface),
+                modifier = Modifier.background(MaterialTheme.colorScheme.surface),
                 data = logisticsData,
                 annotatedAction = listOf(AnnotatedAction("1[3-9][0-9]{9}") { tag ->
                     val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${tag}"))

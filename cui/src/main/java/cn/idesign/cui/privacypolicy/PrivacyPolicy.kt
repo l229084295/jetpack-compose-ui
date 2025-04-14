@@ -10,12 +10,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonColors
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -36,6 +35,7 @@ import cn.idesign.cui.annotatedtext.AnnotatedText
 import cn.idesign.cui.modal.Modal
 import cn.idesign.cui.modal.ModalState
 import cn.idesign.cui.modal.rememberModalState
+import cn.idesign.cui.utils.ContentAlpha
 import kotlinx.coroutines.launch
 
 /**
@@ -47,20 +47,20 @@ fun PrivacyPolicy(
     modifier: Modifier = Modifier,
     state: ModalState = rememberModalState(),
     text: String,
-    textColor: Color = MaterialTheme.colors.onSurface,
-    textTextStyle: TextStyle = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.Medium),
+    textColor: Color = MaterialTheme.colorScheme.onSurface,
+    textTextStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Medium),
     secondaryText: String,
-    secondaryTextColor: Color = MaterialTheme.colors.onSurface.copy(ContentAlpha.medium),
-    secondaryTextStyle: TextStyle = MaterialTheme.typography.body2.copy(
+    secondaryTextColor: Color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.medium),
+    secondaryTextStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(
         fontSize = 12.sp,
         color = secondaryTextColor
     ),
     annotatedAction: List<AnnotatedAction> = listOf(),
-    annotatedStyle: SpanStyle = SpanStyle(color = MaterialTheme.colors.primary),
+    annotatedStyle: SpanStyle = SpanStyle(color = MaterialTheme.colorScheme.primary),
     okText: String = "同意",
     okButtonColors: ButtonColors = ButtonDefaults.buttonColors(),
     cancelText: String = "不同意",
-    okTextStyle: TextStyle = secondaryTextStyle.copy(color = MaterialTheme.colors.surface),
+    okTextStyle: TextStyle = secondaryTextStyle.copy(color = MaterialTheme.colorScheme.surface),
     onOkClick: (() -> Unit)? = null,
     onCancelClick: (() -> Unit)? = null,
 ) {
@@ -83,7 +83,7 @@ fun PrivacyPolicy(
         Column(
             modifier = Modifier
                 .fillMaxWidth(0.65f)
-                .background(color = MaterialTheme.colors.surface, RoundedCornerShape(10.dp))
+                .background(color = MaterialTheme.colorScheme.surface, RoundedCornerShape(10.dp))
                 .padding(20.dp, 20.dp, 20.dp, 10.dp)
                 .then(modifier),
             horizontalAlignment = Alignment.CenterHorizontally

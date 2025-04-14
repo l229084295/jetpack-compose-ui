@@ -14,13 +14,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -34,14 +34,16 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import cn.idesign.cui.bottomsheet.BottomSheetState
+import cn.idesign.cui.utils.ContentAlpha
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GridSheet(
     state: BottomSheetState,
     firstLine: Array<GridSheetItem>,
     secondLine: Array<GridSheetItem>,
-    textTextStyle: TextStyle = MaterialTheme.typography.body2,
+    textTextStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     textModifier: Modifier = Modifier,
     firstLineImageModifier: Modifier = Modifier
         .size(48.dp)
@@ -108,7 +110,7 @@ fun GridSheet(
                                 text = item.text,
                                 style = textTextStyle,
                                 color = textColor.takeOrElse {
-                                    MaterialTheme.colors.onSurface.copy(
+                                    MaterialTheme.colorScheme.onSurface.copy(
                                         alpha = ContentAlpha.high
                                     )
                                 },
@@ -143,7 +145,7 @@ fun GridSheet(
                                 text = item.text,
                                 style = textTextStyle,
                                 color = textColor.takeOrElse {
-                                    MaterialTheme.colors.onSurface.copy(
+                                    MaterialTheme.colorScheme.onSurface.copy(
                                         alpha = ContentAlpha.high
                                     )
                                 },

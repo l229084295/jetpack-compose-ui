@@ -10,14 +10,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Icon
-import androidx.compose.material.LocalAbsoluteElevation
-import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalAbsoluteTonalElevation
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,6 +32,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import cn.idesign.cui.utils.ContentAlpha
 import cn.idesign.cui.utils.calculateForegroundColor
 
 @Composable
@@ -46,9 +46,9 @@ fun Stepper(
     step: Int = 1,
     inputReadOnly: Boolean = false,
     disable: Boolean = false,
-    backgroundColor: Color = MaterialTheme.colors.surface,
+    backgroundColor: Color = MaterialTheme.colorScheme.surface,
 ) {
-    val absoluteElevation = LocalAbsoluteElevation.current + 1.dp
+    val absoluteElevation = LocalAbsoluteTonalElevation.current + 1.dp
     val foregroundColor = calculateForegroundColor(backgroundColor, absoluteElevation)
     val _backgroundColor = foregroundColor.compositeOver(backgroundColor)
     Row(
@@ -69,7 +69,7 @@ fun Stepper(
                     })
                 .padding(2.dp)
                 .alpha(if (!disable && state.currentValue > min) ContentAlpha.high else ContentAlpha.disabled),
-            tint = MaterialTheme.colors.onSurface
+            tint = MaterialTheme.colorScheme.onSurface
         )
         BasicTextField(
             value = state.currentValue.toString(),
@@ -83,7 +83,7 @@ fun Stepper(
             },
             keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.NumberPassword),
             textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center)
-                .copy(color = MaterialTheme.colors.onSurface),
+                .copy(color = MaterialTheme.colorScheme.onSurface),
             maxLines = 1,
             singleLine = true,
             readOnly = inputReadOnly,
@@ -105,7 +105,7 @@ fun Stepper(
                     })
                 .padding(2.dp)
                 .alpha(if (!disable && state.currentValue < max) ContentAlpha.high else ContentAlpha.disabled),
-            tint = MaterialTheme.colors.onSurface
+            tint = MaterialTheme.colorScheme.onSurface
         )
     }
 }

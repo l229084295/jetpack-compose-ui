@@ -17,13 +17,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
+import cn.idesign.cui.utils.ContentAlpha
 
 @Composable
 fun CollapseItem(
@@ -61,7 +61,7 @@ fun CollapseItem(
                     _open = !_open
                     onClick?.let { it(_open) }
                 }
-                .background(color = MaterialTheme.colors.surface.copy(ContentAlpha.high))
+                .background(color = MaterialTheme.colorScheme.surface.copy(ContentAlpha.high))
                 .padding(horizontal = 10.dp)
                 .then(titleModifier),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -69,8 +69,8 @@ fun CollapseItem(
         ) {
             Text(
                 text = title,
-                style = MaterialTheme.typography.subtitle1,
-                color = MaterialTheme.colors.onSurface.copy(ContentAlpha.high)
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high)
             )
             Icon(
                 imageVector = Icons.Default.ArrowForward,
@@ -78,10 +78,10 @@ fun CollapseItem(
                 modifier = Modifier
                     .rotate(rotate)
                     .size(16.dp),
-                tint = MaterialTheme.colors.onSurface.copy(ContentAlpha.medium)
+                tint = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.medium)
             )
         }
-        Divider()
+        HorizontalDivider()
         AnimatedVisibility(
             visible = _open,
             enter = expandVertically(
@@ -90,7 +90,7 @@ fun CollapseItem(
             exit = shrinkVertically() + fadeOut()
         ) {
             Column(
-                modifier = Modifier.background(MaterialTheme.colors.surface).padding(10.dp).then(contentModifier)
+                modifier = Modifier.background(MaterialTheme.colorScheme.surface).padding(10.dp).then(contentModifier)
             ) {
                 content()
             }

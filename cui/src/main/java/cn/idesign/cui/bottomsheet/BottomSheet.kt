@@ -1,10 +1,11 @@
 package cn.idesign.cui.bottomsheet
 
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ModalBottomSheetLayout
-import androidx.compose.material.ModalBottomSheetState
-import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material.rememberModalBottomSheetState
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SheetState
+import androidx.compose.material3.SheetValue
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.saveable.Saver
@@ -12,28 +13,30 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomSheet(
     modifier: Modifier = Modifier,
     state: BottomSheetState = rememberBottomSheetState(),
     sheetBackgroundColor: Color = Color.Transparent,
-    content: @Composable () -> Unit
+    content: @Composable ColumnScope.() -> Unit,
+    onDismissRequest: (() -> Unit)? = null,
 ) {
     val bottomSheetState =
-        rememberModalBottomSheetState(initialValue = state.covertBottomSheetValue(state.initialValue))
+        rememberModalBottomSheetState()
     LaunchedEffect(bottomSheetState) {
         state.bottomSheetState = bottomSheetState
     }
-    ModalBottomSheetLayout(
+    ModalBottomSheet(
         modifier = modifier,
         sheetState = bottomSheetState,
-        sheetBackgroundColor = sheetBackgroundColor,
-        sheetContent = {
-            content()
-        }) { }
+        containerColor = sheetBackgroundColor,
+        onDismissRequest = onDismissRequest ?: {},
+        content = content
+    )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun rememberBottomSheetState(
     initialValue: BottomSheetValue = BottomSheetValue.Hidden
@@ -43,21 +46,16 @@ fun rememberBottomSheetState(
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
+@ExperimentalMaterial3Api
 open class BottomSheetState(
     val initialValue: BottomSheetValue,
 ) {
 
-
-    internal lateinit var bottomSheetState: ModalBottomSheetState
+    internal lateinit var bottomSheetState: SheetState
 
     suspend fun show() {
         bottomSheetState.show()
 
-    }
-
-    suspend fun animateTo(targetValue: BottomSheetValue) {
-        bottomSheetState.animateTo(covertBottomSheetValue(targetValue))
     }
 
     suspend fun hide() {
@@ -68,11 +66,11 @@ open class BottomSheetState(
         get() = bottomSheetState.isVisible
 
 
-    internal fun covertBottomSheetValue(value: BottomSheetValue): ModalBottomSheetValue {
+    internal fun covertBottomSheetValue(value: BottomSheetValue): SheetValue {
         return when (value) {
-            BottomSheetValue.Hidden -> ModalBottomSheetValue.Hidden
-            BottomSheetValue.HalfExpanded -> ModalBottomSheetValue.HalfExpanded
-            BottomSheetValue.Expanded -> ModalBottomSheetValue.Expanded
+            BottomSheetValue.Hidden -> SheetValue.Hidden
+            BottomSheetValue.HalfExpanded -> SheetValue.PartiallyExpanded
+            BottomSheetValue.Expanded -> SheetValue.Expanded
         }
     }
 

@@ -5,9 +5,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Divider
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -19,6 +20,7 @@ import cn.idesign.cui.bottomsheet.rememberBottomSheetState
 import kotlinx.coroutines.launch
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ActionSheet(
     state: BottomSheetState = rememberBottomSheetState(),
@@ -39,7 +41,7 @@ fun ActionSheet(
                         secondaryText = description
                     )
                 )
-                Divider()
+                HorizontalDivider()
             }
         },
         footer = {
@@ -68,14 +70,14 @@ fun ActionSheet(
                             }
                         }
                     )
-                    Divider()
+                    HorizontalDivider()
                 }
             }
         },
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ActionSheet(
     state: BottomSheetState = rememberBottomSheetState(),
@@ -90,7 +92,7 @@ fun ActionSheet(
             Box(
                 Modifier
                     .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
-                    .background(MaterialTheme.colors.surface)
+                    .background(MaterialTheme.colorScheme.surface)
             ) {
                 Column {
                     header?.let {

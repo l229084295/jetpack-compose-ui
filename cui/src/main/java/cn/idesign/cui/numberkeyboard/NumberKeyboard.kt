@@ -10,12 +10,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Backspace
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,11 +28,13 @@ import androidx.constraintlayout.compose.Dimension
 import cn.idesign.cui.bottomsheet.BottomSheet
 import cn.idesign.cui.bottomsheet.BottomSheetState
 import cn.idesign.cui.bottomsheet.rememberBottomSheetState
+import cn.idesign.cui.utils.ContentAlpha
 import com.google.accompanist.flowlayout.FlowRow
 
 /**
  * 类似微信数字键盘
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NumberKeyBoard(
     modifier: Modifier = Modifier,
@@ -54,7 +56,7 @@ fun NumberKeyBoard(
             BoxWithConstraints(
                 Modifier
                     .fillMaxWidth()
-                    .background(MaterialTheme.colors.background)
+                    .background(MaterialTheme.colorScheme.background)
                     .padding(bottom = 22.dp)
                     .then(modifier)
             ) {
@@ -90,7 +92,7 @@ fun NumberKeyBoard(
                                     .size(itemWidthDp, itemHeight)
                                     .clip(RoundedCornerShape(8.dp))
                                     .background(
-                                        MaterialTheme.colors.surface,
+                                        MaterialTheme.colorScheme.surface,
                                     )
                                     .clickable {
                                         onInput?.invoke(value)
@@ -98,7 +100,7 @@ fun NumberKeyBoard(
                             ) {
                                 Text(
                                     text = value,
-                                    style = MaterialTheme.typography.h6
+                                    style = MaterialTheme.typography.titleLarge
                                 )
                             }
                         }
@@ -114,7 +116,7 @@ fun NumberKeyBoard(
                             .size(itemWidthDp, itemHeight)
                             .clip(RoundedCornerShape(8.dp))
                             .background(
-                                MaterialTheme.colors.surface
+                                MaterialTheme.colorScheme.surface
                             )
                             .clickable {
                                 onDelete?.invoke()
@@ -134,7 +136,7 @@ fun NumberKeyBoard(
                             .width(itemWidthDp)
                             .clip(RoundedCornerShape(8.dp))
                             .background(
-                                MaterialTheme.colors.primary
+                                MaterialTheme.colorScheme.primary
                             )
                             .alpha(if (confirmDisable) ContentAlpha.disabled else 1.0f)
                             .clickable(
@@ -147,7 +149,7 @@ fun NumberKeyBoard(
                     ) {
                         Text(
                             text = confirmText,
-                            style = MaterialTheme.typography.h6.copy(MaterialTheme.colors.onPrimary)
+                            style = MaterialTheme.typography.titleLarge.copy(MaterialTheme.colorScheme.onPrimary)
                         )
                     }
 
@@ -165,13 +167,13 @@ fun NumberKeyBoard(
                             .height(itemHeight)
                             .clip(RoundedCornerShape(8.dp))
                             .background(
-                                MaterialTheme.colors.surface
+                                MaterialTheme.colorScheme.surface
                             )
                             .clickable {
                                 onInput?.invoke("0")
                             }, contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "0", style = MaterialTheme.typography.h6)
+                        Text(text = "0", style = MaterialTheme.typography.titleLarge)
                     }
                     Box(
                         modifier = Modifier
@@ -184,13 +186,13 @@ fun NumberKeyBoard(
                             .size(itemWidthDp, itemHeight)
                             .clip(RoundedCornerShape(8.dp))
                             .background(
-                                MaterialTheme.colors.surface
+                                MaterialTheme.colorScheme.surface
                             )
                             .clickable {
                                 onInput?.invoke(".")
                             }, contentAlignment = Alignment.Center
                     ) {
-                        Text(text = ".", style = MaterialTheme.typography.h6)
+                        Text(text = ".", style = MaterialTheme.typography.titleLarge)
                     }
                 }
             }

@@ -7,20 +7,23 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.RadioButton
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,8 +45,8 @@ abstract class BaseActivity : ComponentActivity() {
     val BLUE_THEME = "blue"
     private lateinit var sharedPreferences: SharedPreferences
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @SuppressLint("RememberReturnType")
-    @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -56,7 +59,7 @@ abstract class BaseActivity : ComponentActivity() {
             }
             CUITestTheme(theme = themeType) {
                 val systemUiController = rememberSystemUiController()
-                val primary = MaterialTheme.colors.primary
+                val primary = MaterialTheme.colorScheme.primary
 
                 remember(primary) {
                     systemUiController.setStatusBarColor(primary)
@@ -78,10 +81,10 @@ abstract class BaseActivity : ComponentActivity() {
                             title = {
                                 Text(
                                     text = title(),
-                                    color = MaterialTheme.colors.onPrimary
+                                    color = MaterialTheme.colorScheme.onPrimary
                                 )
                             },
-                            backgroundColor = MaterialTheme.colors.primary,
+                            colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primary),
                             actions = {
 
                                 IconButton(onClick = {
@@ -98,12 +101,12 @@ abstract class BaseActivity : ComponentActivity() {
                                     onDismissRequest = { expanded = false }) {
 
                                     menuItems.forEach {
-                                        DropdownMenuItem(onClick = {
+                                        DropdownMenuItem(text = {}, onClick = {
 
                                             themeType = getThemeType(it.value)
                                             save(it)
                                             expanded = false
-                                        }) {
+                                        }, leadingIcon = {
                                             Row(verticalAlignment = Alignment.CenterVertically) {
                                                 RadioButton(
                                                     selected = it.value == theme,
@@ -114,7 +117,7 @@ abstract class BaseActivity : ComponentActivity() {
                                                     })
                                                 Text(text = it.label)
                                             }
-                                        }
+                                        })
                                     }
                                 }
                             }
@@ -123,8 +126,8 @@ abstract class BaseActivity : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxSize()
                         .systemBarsPadding()
-                ) {
-                    Surface {
+                ) { padding ->
+                    Surface(modifier = Modifier.padding(padding)) {
                         Render()
                     }
                 }

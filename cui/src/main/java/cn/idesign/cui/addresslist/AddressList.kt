@@ -9,10 +9,10 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import cn.idesign.cui.swipe.Swipe
 import cn.idesign.cui.swipe.SwipeState
 import cn.idesign.cui.swipe.rememberSwipeState
+import cn.idesign.cui.utils.ContentAlpha
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -75,7 +76,7 @@ fun AddressList(
                                             onDefault?.invoke(model)
                                         }
                                         .background(
-                                            MaterialTheme.colors.background.copy(
+                                            MaterialTheme.colorScheme.background.copy(
                                                 ContentAlpha.medium
                                             )
                                         ),
@@ -83,8 +84,8 @@ fun AddressList(
                                 ) {
                                     Text(
                                         text = "设为默认",
-                                        color = MaterialTheme.colors.onSurface,
-                                        style = MaterialTheme.typography.caption
+                                        color = MaterialTheme.colorScheme.onSurface,
+                                        style = MaterialTheme.typography.bodySmall
                                     )
                                 }
 
@@ -102,7 +103,7 @@ fun AddressList(
                                 Text(
                                     text = "删除",
                                     color = Color.White,
-                                    style = MaterialTheme.typography.caption
+                                    style = MaterialTheme.typography.bodySmall
                                 )
                             }
                         }
@@ -128,7 +129,7 @@ fun AddressList(
                 }
 
                 if (divider) {
-                    Divider(modifier = Modifier.align(Alignment.BottomStart))
+                    HorizontalDivider(modifier = Modifier.align(Alignment.BottomStart))
                 }
             }
         }

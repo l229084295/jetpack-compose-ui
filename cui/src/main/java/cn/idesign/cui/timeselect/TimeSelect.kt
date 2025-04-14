@@ -14,13 +14,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
@@ -32,11 +32,13 @@ import androidx.compose.ui.unit.dp
 import cn.idesign.cui.bottomsheet.BottomSheet
 import cn.idesign.cui.bottomsheet.BottomSheetState
 import cn.idesign.cui.bottomsheet.rememberBottomSheetState
+import cn.idesign.cui.utils.ContentAlpha
 import kotlinx.coroutines.launch
 
 /**
  * 类似于京东选择配送时间组件
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TimeSelect(
     modifier: Modifier = Modifier,
@@ -46,16 +48,16 @@ fun TimeSelect(
     selectTime: List<String> = listOf(),
     panelActiveModifier: Modifier = Modifier,
     panelNormalModifier: Modifier = Modifier,
-    panelActiveStyle: TextStyle = MaterialTheme.typography.body2.copy(MaterialTheme.colors.onSurface),
-    panelNormalStyle: TextStyle = MaterialTheme.typography.body2.copy(
-        MaterialTheme.colors.onSurface.copy(
+    panelActiveStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(MaterialTheme.colorScheme.onSurface),
+    panelNormalStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(
+        MaterialTheme.colorScheme.onSurface.copy(
             ContentAlpha.medium
         )
     ),
     timeActiveModifier: Modifier = Modifier,
     timeNormalModifier: Modifier = Modifier,
-    timeActiveStyle: TextStyle = MaterialTheme.typography.body2.copy(MaterialTheme.colors.primary),
-    timeNormalStyle: TextStyle = MaterialTheme.typography.body2,
+    timeActiveStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(MaterialTheme.colorScheme.primary),
+    timeNormalStyle: TextStyle = MaterialTheme.typography.bodyMedium,
 
     onKeyChange: ((key: String) -> Unit)? = null,
     onTimeChange: ((key: List<String>) -> Unit)? = null,
@@ -73,7 +75,7 @@ fun TimeSelect(
                 Modifier
                     .fillMaxHeight(0.5f)
                     .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
-                    .background(MaterialTheme.colors.surface)
+                    .background(MaterialTheme.colorScheme.surface)
                     .then(modifier)
             ) {
                 Row(
@@ -103,7 +105,7 @@ fun TimeSelect(
                         Modifier
                             .width(140.dp)
                             .fillMaxHeight()
-                            .background(MaterialTheme.colors.background),
+                            .background(MaterialTheme.colorScheme.background),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         repeat(timeSelectScopeImpl.intervals.size) { index ->
@@ -118,7 +120,7 @@ fun TimeSelect(
                             if (panel.key == selectKey) {
                                 panelModifier =
                                     panelModifier
-                                        .background(MaterialTheme.colors.surface)
+                                        .background(MaterialTheme.colorScheme.surface)
                                         .padding(15.dp)
                                         .then(panelActiveModifier)
                                 style = panelActiveStyle
@@ -139,7 +141,7 @@ fun TimeSelect(
                         Modifier
                             .weight(1f)
                             .verticalScroll(state = rememberScrollState())
-                            .background(MaterialTheme.colors.surface)
+                            .background(MaterialTheme.colorScheme.surface)
                             .padding(10.dp, 0.dp, 10.dp, 50.dp),
                         verticalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
@@ -166,11 +168,11 @@ fun TimeSelect(
                                 if (contains) {
                                     timeModifier = timeModifier
                                         .background(
-                                            MaterialTheme.colors.primary.copy(0.12f),
+                                            MaterialTheme.colorScheme.primary.copy(0.12f),
                                         )
                                         .border(
                                             1.dp,
-                                            MaterialTheme.colors.primary,
+                                            MaterialTheme.colorScheme.primary,
                                             RoundedCornerShape(4.dp)
                                         )
                                         .padding(15.dp)
@@ -180,11 +182,11 @@ fun TimeSelect(
                                 } else {
                                     timeModifier = timeModifier
                                         .background(
-                                            MaterialTheme.colors.background
+                                            MaterialTheme.colorScheme.background
                                         )
                                         .border(
                                             1.dp,
-                                            MaterialTheme.colors.onSurface.copy(0.12f),
+                                            MaterialTheme.colorScheme.onSurface.copy(0.12f),
                                             RoundedCornerShape(4.dp)
                                         )
                                         .padding(15.dp)

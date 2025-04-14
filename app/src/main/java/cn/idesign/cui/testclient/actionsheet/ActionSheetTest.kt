@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -24,7 +24,7 @@ import cn.idesign.cui.cell.Cell
 import cn.idesign.cui.testclient.R
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ActionSheetTest() {
     val context = LocalContext.current
@@ -102,6 +102,7 @@ fun ActionSheetTest() {
     GridSimple(gridState, context)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun Simple(
     actionSheetState: BottomSheetState,
@@ -128,6 +129,7 @@ private fun Simple(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun GravityLeft(
     actionSheetState: BottomSheetState,
@@ -161,6 +163,7 @@ private fun GravityLeft(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun WithTitle(
     actionSheetState: BottomSheetState,
@@ -187,6 +190,7 @@ private fun WithTitle(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun CancelTitle(
     actionSheetState: BottomSheetState,
@@ -213,6 +217,7 @@ private fun CancelTitle(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun DescriptionSimple(
     actionSheetState: BottomSheetState,
@@ -241,6 +246,7 @@ private fun DescriptionSimple(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ColorSimple(
     actionSheetState: BottomSheetState,
@@ -272,6 +278,7 @@ private fun ColorSimple(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun GridSimple(
     actionSheetState: BottomSheetState,

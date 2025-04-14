@@ -1,20 +1,19 @@
 package cn.idesign.cui.testclient.ui.theme
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-private val DarkColorPalette = darkColors(
+private val DarkColorPalette = darkColorScheme(
 //    primary = Color(0xFF121212),
 //    onPrimary = Color.White,
 //    error = Red700,
 )
 
-private val BlueColorPalette = lightColors(
+private val BlueColorPalette = lightColorScheme(
     primary = Blue500,
-    primaryVariant = Blue700,
     secondary = Pink300,
 //    error = Red700,
     background = Background,
@@ -28,7 +27,7 @@ private val BlueColorPalette = lightColors(
     */
 )
 
-private val LightColorPalette = lightColors(
+private val LightColorPalette = lightColorScheme(
     primary = Color.White,
     onPrimary = Color.Black,
     secondary = Pink300,
@@ -52,7 +51,7 @@ fun CUITestTheme(theme: Theme = Theme.Blue, content: @Composable () -> Unit) {
     }
 
     MaterialTheme(
-        colors = colors,
+        colorScheme = colors,
         content = content
     )
 }

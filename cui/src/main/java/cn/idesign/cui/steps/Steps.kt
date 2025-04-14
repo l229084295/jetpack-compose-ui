@@ -13,13 +13,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Icon
-import androidx.compose.material.LocalAbsoluteElevation
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalAbsoluteTonalElevation
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -44,6 +43,7 @@ import androidx.constraintlayout.compose.Visibility
 import cn.idesign.cui.annotatedtext.AnnotatedAction
 import cn.idesign.cui.annotatedtext.AnnotatedText
 import cn.idesign.cui.common.Direction
+import cn.idesign.cui.utils.ContentAlpha
 import cn.idesign.cui.utils.calculateForegroundColor
 
 @SuppressLint("RememberReturnType")
@@ -54,7 +54,7 @@ fun Steps(
     data: List<StepModel> = listOf(),
     direction: Direction = Direction.Vertical,
     annotatedAction: List<AnnotatedAction> = listOf(),
-    annotatedStyle: SpanStyle = SpanStyle(color = MaterialTheme.colors.primary),
+    annotatedStyle: SpanStyle = SpanStyle(color = MaterialTheme.colorScheme.primary),
 ) {
     remember(data) {
         state.size = data.size
@@ -167,10 +167,10 @@ fun VerticalStepItem(
     modifier: Modifier = Modifier,
     text: String? = null,
     textColor: Color,
-    textTextStyle: TextStyle = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.SemiBold),
+    textTextStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold),
     secondaryText: String? = null,
     secondaryTextColor: Color,
-    secondaryTextTextStyle: TextStyle = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
+    secondaryTextTextStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 12.sp),
     icon: @Composable () -> Unit,
     status: StepStatus,
     showDivider: Boolean = true,
@@ -179,12 +179,12 @@ fun VerticalStepItem(
 ) {
 
     val textColorState by animateColorAsState(targetValue = textColor.takeOrElse {
-        MaterialTheme.colors.onSurface.copy(
+        MaterialTheme.colorScheme.onSurface.copy(
             alpha = if (status == StepStatus.Wait) ContentAlpha.medium else ContentAlpha.high
         )
     })
     val secondaryTextColorState by animateColorAsState(targetValue = secondaryTextColor.takeOrElse {
-        MaterialTheme.colors.onSurface.copy(
+        MaterialTheme.colorScheme.onSurface.copy(
             alpha = if (status == StepStatus.Wait) ContentAlpha.disabled else ContentAlpha.medium
         )
     })
@@ -208,7 +208,7 @@ fun VerticalStepItem(
                     width = Dimension.value(1.dp)
                     height = Dimension.fillToConstraints
                 }
-                .background(MaterialTheme.colors.onSurface.copy(alpha = 0.12f)))
+                .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)))
 
         }
 
@@ -249,10 +249,10 @@ fun HorizontalStepItem(
     modifier: Modifier = Modifier,
     text: String? = null,
     textColor: Color,
-    textTextStyle: TextStyle = MaterialTheme.typography.body2.copy(fontWeight = FontWeight.SemiBold),
+    textTextStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold),
     secondaryText: String? = null,
     secondaryTextColor: Color,
-    secondaryTextTextStyle: TextStyle = MaterialTheme.typography.body2.copy(fontSize = 12.sp),
+    secondaryTextTextStyle: TextStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 12.sp),
     icon: @Composable () -> Unit,
     status: StepStatus,
     showDivider: Boolean = true,
@@ -261,12 +261,12 @@ fun HorizontalStepItem(
 ) {
 
     val textColorState by animateColorAsState(targetValue = textColor.takeOrElse {
-        MaterialTheme.colors.onSurface.copy(
+        MaterialTheme.colorScheme.onSurface.copy(
             alpha = if (status == StepStatus.Wait) ContentAlpha.medium else ContentAlpha.high
         )
     })
     val secondaryTextColorState by animateColorAsState(targetValue = secondaryTextColor.takeOrElse {
-        MaterialTheme.colors.onSurface.copy(
+        MaterialTheme.colorScheme.onSurface.copy(
             alpha = if (status == StepStatus.Wait) ContentAlpha.disabled else ContentAlpha.medium
         )
     })
@@ -290,7 +290,7 @@ fun HorizontalStepItem(
                     height = Dimension.value(1.dp)
                     width = Dimension.fillToConstraints
                 }
-                .background(MaterialTheme.colors.onSurface.copy(alpha = 0.12f)))
+                .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)))
 
         }
 
@@ -339,15 +339,15 @@ fun StepIcon(
 ) {
     val background by animateColorAsState(
         targetValue = when (status) {
-            StepStatus.Finish -> MaterialTheme.colors.primary
-            StepStatus.Error -> MaterialTheme.colors.error
+            StepStatus.Finish -> MaterialTheme.colorScheme.primary
+            StepStatus.Error -> MaterialTheme.colorScheme.error
             StepStatus.Wait -> {
-                val backgroundColor = MaterialTheme.colors.surface
-                val absoluteElevation = LocalAbsoluteElevation.current + 1.dp
+                val backgroundColor = MaterialTheme.colorScheme.surface
+                val absoluteElevation = LocalAbsoluteTonalElevation.current + 1.dp
                 val foregroundColor = calculateForegroundColor(backgroundColor, absoluteElevation)
                 foregroundColor.compositeOver(backgroundColor)
             }
-            StepStatus.Process -> MaterialTheme.colors.primary
+            StepStatus.Process -> MaterialTheme.colorScheme.primary
         }
     )
     Box(
@@ -366,23 +366,23 @@ fun StepIcon(
                     StepStatus.Finish -> Icon(
                         Icons.Default.Check,
                         contentDescription = null,
-                        tint = MaterialTheme.colors.onPrimary,
+                        tint = MaterialTheme.colorScheme.onPrimary,
                         modifier = Modifier.size(18.dp)
                     )
                     StepStatus.Error -> Text(
                         text = index.toString(),
-                        color = MaterialTheme.colors.onPrimary,
-                        style = MaterialTheme.typography.body2.copy(fontSize = 12.sp)
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 12.sp)
                     )
                     StepStatus.Wait -> Text(
                         text = index.toString(),
-                        color = MaterialTheme.colors.onSurface,
-                        style = MaterialTheme.typography.body2.copy(fontSize = 12.sp)
+                        color = MaterialTheme.colorScheme.onSurface,
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 12.sp)
                     )
                     StepStatus.Process -> Text(
                         text = index.toString(),
-                        color = MaterialTheme.colors.onPrimary,
-                        style = MaterialTheme.typography.body2.copy(fontSize = 12.sp)
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        style = MaterialTheme.typography.bodyMedium.copy(fontSize = 12.sp)
                     )
                 }
             }
@@ -399,19 +399,19 @@ fun StepIconCopy(status: StepStatus) {
     val tripe = when (status) {
         StepStatus.Finish -> Triple(
             Pair(
-                MaterialTheme.colors.primary,
-                MaterialTheme.colors.primary.copy(alpha)
+                MaterialTheme.colorScheme.primary,
+                MaterialTheme.colorScheme.primary.copy(alpha)
             ), largeWidth, smallWidth
         )
         StepStatus.Error -> Triple(
             Pair(
-                MaterialTheme.colors.error,
-                MaterialTheme.colors.error.copy(alpha)
+                MaterialTheme.colorScheme.error,
+                MaterialTheme.colorScheme.error.copy(alpha)
             ), largeWidth, smallWidth
         )
         StepStatus.Wait -> Triple(
             Pair(
-                MaterialTheme.colors.onSurface.copy(0.12f),
+                MaterialTheme.colorScheme.onSurface.copy(0.12f),
                 Color.Transparent,
             ),
             largeWidth,
@@ -419,8 +419,8 @@ fun StepIconCopy(status: StepStatus) {
         )
         StepStatus.Process -> Triple(
             Pair(
-                MaterialTheme.colors.primary,
-                MaterialTheme.colors.primary.copy(alpha)
+                MaterialTheme.colorScheme.primary,
+                MaterialTheme.colorScheme.primary.copy(alpha)
             ), largeWidth, largeWidth
         )
     }
