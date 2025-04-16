@@ -1,6 +1,7 @@
 package cn.idesign.cui.testclient.swipe
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
@@ -21,11 +23,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import cn.idesign.cui.cell.Cell
 import cn.idesign.cui.swipe.Swipe
+import cn.idesign.cui.swipe.SwipeBox
+import cn.idesign.cui.swipe.SwipeBoxControl
 import cn.idesign.cui.swipe.SwipeDirection
+import cn.idesign.cui.swipe.rememberSwipeBoxControl
 import cn.idesign.cui.swipe.rememberSwipeState
 import cn.idesign.cui.utils.ContentAlpha
 import kotlinx.coroutines.launch
@@ -37,6 +43,8 @@ fun SwipeTest() {
     }
     val state = rememberSwipeState()
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+    val control: SwipeBoxControl = rememberSwipeBoxControl()
     LazyColumn(
         Modifier.padding(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
@@ -49,21 +57,31 @@ fun SwipeTest() {
                 color = MaterialTheme.colorScheme.onSurface.copy(ContentAlpha.high),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Medium)
             )
-            Swipe(background = {
-                Box(
-                    modifier = Modifier
-                        .width(66.dp)
-                        .fillMaxHeight()
-                        .background(Color.Red),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = "删除",
-                        color = Color.White,
+            SwipeBox(
+                control = control,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight(),
+                actionWidth = 70.dp,
+                endAction = listOf {
+                    Box(
+                        modifier = Modifier
+                            .width(66.dp)
+                            .fillMaxHeight()
+                            .background(Color.Red)
+                            .clickable {
 
-                        )
+                            },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "删除",
+                            color = Color.White,
+
+                            )
+                    }
                 }
-            }) {
+            ) {
                 Cell(text = "左滑删除")
             }
         }
